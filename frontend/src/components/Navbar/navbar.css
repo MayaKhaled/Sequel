@@ -1,0 +1,18 @@
+.MuiAppBar-root {
+  background-color: black !important;
+  height: 5vw !important;
+  width: 96vw !important;
+  margin-left: 2vw;
+  justify-content: center !important;
+  border-radius: 0.5vw;
+  margin-top: 1vw;
+  margin-bottom: 3vw;
+}
+.button {
+  width: 6vw !important;
+  margin: 0.2vw;
+  background: none;
+  border: 0pt;
+  color: white;
+  font-size: 1.5vw;
+}

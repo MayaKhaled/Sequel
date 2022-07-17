@@ -1,0 +1,7 @@
+.MuiCardMedia-root{
+    height: 25vw !important;
+}
+.MuiCard-root{
+    border-color: black!important;
+    margin-bottom: 1.5vw;
+}
