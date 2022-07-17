@@ -9,12 +9,16 @@ const signup = async (req, res) => {
     const email = req.body.email;
     const user = req.body;
     const data = await User.findOne({
-      username: req.body.username,
       email: email,
     });
 
     if (data) {
-      return res.status(400).send("invalid email").end();
+      return res
+        .json({
+          statusCode: 1,
+          error: "invalid email",
+        })
+        .end();
     } else {
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(user.password, salt);
@@ -31,9 +35,15 @@ const signup = async (req, res) => {
         user: newUser._id,
         list: [],
       });
-      return res.status(200).send("Signed up").end();
+      return res
+        .json({
+          statusCode: 0,
+          message: "Signed Up",
+        })
+        .end();
     }
   } catch (exception) {
+    console.log(exception, "excep");
     return res.json({
       statusCode: 1,
       error: "Server Error",
