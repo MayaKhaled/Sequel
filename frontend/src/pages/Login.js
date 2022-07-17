@@ -25,7 +25,6 @@ export default function Login2() {
         Password: password,
       })
       .then((res) => {
-        console.log(res, "Signin headers");
         localStorage.clear();
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.data));
@@ -42,7 +41,6 @@ export default function Login2() {
 
   useEffect(() => {
     localStorage.clear();
-    console.log(localStorage.getItem("headers"));
   }, []);
   return (
     <div className="login">

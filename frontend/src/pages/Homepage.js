@@ -41,7 +41,6 @@ export default function Homepage() {
         },
       })
       .then(function (response) {
-        console.log(response.data);
         const movies = response.data.results;
         const l = [];
         for (let i = 0; i < movies.length; i++) {
@@ -54,7 +53,6 @@ export default function Homepage() {
             fav: false,
           });
         }
-        console.log(!headers, "Headers");
         if (!headers) {
           setList(l);
         } else {
@@ -69,7 +67,6 @@ export default function Homepage() {
               }
             )
             .then((res) => {
-              console.log(res.data.data);
               if (res.data.data === []) {
                 setList(l);
               } else {
@@ -111,7 +108,6 @@ export default function Homepage() {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         const movies = response.data.results;
         const l = [];
         for (let i = 0; i < movies.length; i++) {
@@ -138,7 +134,6 @@ export default function Homepage() {
               }
             )
             .then((res) => {
-              console.log(res);
               if (res.data.data === []) {
                 setList(l);
               } else {
@@ -182,7 +177,7 @@ export default function Homepage() {
   const handlePageClick = async (data) => {
     let currentPage = data.selected + 1;
 
-    const movies = await fetchMovies(currentPage);
+    await fetchMovies(currentPage);
   };
 
   const handleFavClick = async (event, movie) => {
@@ -193,7 +188,6 @@ export default function Homepage() {
       let l = [];
       let fav = false;
       for (let i = 0; i < list.length; i++) {
-        console.log(movie, "FavClick");
         if (list[i].id === movie.id) {
           l.push({
             id: list[i].id,
@@ -209,7 +203,6 @@ export default function Homepage() {
         }
       }
       setList(l);
-      console.log(movie, "Movie");
       if (fav === true) {
         axios
           .post(

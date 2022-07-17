@@ -1,14 +1,12 @@
 const Joi = require("joi");
 
 const validateSignin = (req, res, next) => {
-  console.log(req.body);
   const schema = Joi.object({
     Email: Joi.string().required(),
     Password: Joi.string().required(),
   }).required();
 
   const isValid = schema.validate(req.body);
-  console.log(isValid.value.email);
   if (!isValid.value) {
     console.log("invalid credentials");
     res
@@ -20,12 +18,10 @@ const validateSignin = (req, res, next) => {
       .send("invalid credentials");
     res.end();
   }
-  console.log("next");
   return next();
 };
 
 const validateSignup = (req, res, next) => {
-  console.log("signup validation");
   const schema = Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
@@ -36,9 +32,7 @@ const validateSignup = (req, res, next) => {
   }).required();
 
   const isValid = schema.validate(req.body);
-  console.log(isValid);
   if (!isValid.value) {
-    console.log("invalid data");
     res
       .json({
         statusCode: 1,
@@ -49,12 +43,10 @@ const validateSignup = (req, res, next) => {
       .send("E-mail already exists");
     return res.end();
   }
-  console.log("next");
   return next();
 };
 
 const validateAddMovie = (req, res, next) => {
-  console.log(req.body);
   const schema = Joi.object({
     movie: Joi.object({
       image: Joi.string().required(),
@@ -65,9 +57,7 @@ const validateAddMovie = (req, res, next) => {
   }).required();
 
   const isValid = schema.validate(req.body);
-  console.log(isValid.value.email);
   if (!isValid.value) {
-    console.log("invalid credentials");
     res
       .json({
         statusCode: 1,
@@ -77,20 +67,16 @@ const validateAddMovie = (req, res, next) => {
       .send("invalid credentials");
     res.end();
   }
-  console.log("next");
   return next();
 };
 
 const validateRemoveMovie = (req, res, next) => {
-  console.log(req.body);
   const schema = Joi.object({
     title: Joi.string().required(),
   }).required();
 
   const isValid = schema.validate(req.body);
-  console.log(isValid.value.email);
   if (!isValid.value) {
-    console.log("invalid credentials");
     res
       .json({
         statusCode: 1,
@@ -100,7 +86,6 @@ const validateRemoveMovie = (req, res, next) => {
       .send("invalid credentials");
     res.end();
   }
-  console.log("next");
   return next();
 };
 
